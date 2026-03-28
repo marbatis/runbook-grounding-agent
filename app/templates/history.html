@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}History | Runbook Grounding Agent{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Query History</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Created</th>
+        <th>Question</th>
+        <th>Confidence</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.created_at }}</td>
+        <td><a href="/qa/{{ row.query_id }}">{{ row.question }}</a></td>
+        <td>{{ '%.2f'|format(row.confidence) }}</td>
+        <td>
+          {% if row.insufficient_evidence %}
+          <span class="badge abstain">Insufficient</span>
+          {% else %}
+          <span class="badge grounded">Grounded</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Query {{ result.query_id }}{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Query Detail</h1>
+  <p><strong>Question:</strong> {{ result.question }}</p>
+  <p><strong>Confidence:</strong> {{ '%.2f'|format(result.confidence) }}</p>
+  <p><strong>Insufficient Evidence:</strong> {{ result.insufficient_evidence }}</p>
+  <p>{{ result.answer }}</p>
+</section>
+<section class="panel">
+  <h2>Cited Chunks</h2>
+  <ul>
+    {% for chunk in result.cited_chunks %}
+    <li><strong>{{ chunk.citation }}</strong>: {{ chunk.text }}</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
