@@ -1,0 +1,17 @@
+{
+  "name": "runbook-grounding-agent",
+  "description": "A disciplined runbook Q&A system that answers only from retrieved markdown runbooks, always returns citations, and abstains when evidence is insufficient.",
+  "repository": "https://github.com/marbatis/runbook-grounding-agent",
+  "keywords": ["python","fastapi","retrieval","demo","heroku"],
+  "env": {
+    "PYTHONUNBUFFERED": {"description": "Disable Python output buffering", "value": "1"},
+    "PROVIDER_MODE": {"description": "Provider mode for demos", "value": "mock"},
+    "RETRIEVAL_MODE": {"description": "Retrieval mode", "value": "keyword"}
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  }
+}
